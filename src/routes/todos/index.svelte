@@ -42,7 +42,7 @@
 </svelte:head>
 
 <div class="todos">
-	<h1>Todos</h1>
+	<h1>to do list</h1>
 
 	<form
 		class="new"

@@ -1,17 +1,20 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
+	import 'bootstrap/dist/css/bootstrap.css';
 </script>
 
-<Header />
+<div class="container">
+	<Header />
 
-<main>
-	<slot />
-</main>
+	<main>
+		<slot />
+	</main>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
+	<footer>
+		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	</footer>
+</div>
 
 <style>
 	main {

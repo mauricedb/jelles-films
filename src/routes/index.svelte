@@ -26,7 +26,7 @@
 		try editing <strong>src/routes/index.svelte</strong>
 	</h2>
 
-	<Counter />
+	<Counter>xxxxxxxxxxxxx</Counter>
 </section>
 
 <style>
