@@ -1,4 +1,6 @@
 <script>
+	import MovieCard from './movie-card.svelte';
+
 	let movieArray = [
 		{
 			id: 1,
@@ -32,21 +34,5 @@
 </header>
 
 <div class="card-group">
-	{#each movieArray as movieObject}
-		<div class="card m-3">
-			<img src={movieObject.img} class="card-img-top" alt="..." />
-			<div class="card-body">
-				<h5 class="card-title">{movieObject.name}</h5>
-				<p class="card-text">{movieObject.releaseDate}</p>
-				<a href="/movie/1-Burn-the-Stage" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-	{/each}
+	{#each movieArray as movieObject}<MovieCard {movieObject} />{/each}
 </div>
-
-<style>
-	.card {
-		flex-basis: 15rem;
-		max-width: 15rem;
-	}
-</style>
