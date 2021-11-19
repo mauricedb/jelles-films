@@ -1,32 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
 	import MovieCard from './movie-card.svelte';
 
-	let movieArray = [
-		{
-			id: 1,
-			name: 'Burn the Stage: The Movie',
-			releaseDate: 'nov 15 2018',
-			img: 'https://www.themoviedb.org/t/p/w220_and_h330_face/pJKy1yvnKh8UjcuYeG3Rt35xHFA.jpg'
-		},
-		{
-			id: 2,
-			name: 'Dilwale Dulhania Le Jayenge',
-			releaseDate: 'nov 15 2018',
-			img: 'https://www.themoviedb.org/t/p/w220_and_h330_face/2CAL2433ZeIihfX1Hb2139CX0pW.jpg'
-		},
-		{
-			id: 3,
-			name: 'The Shawshank Redemption',
-			releaseDate: 'nov 15 2018',
-			img: 'https://www.themoviedb.org/t/p/w220_and_h330_face/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg'
-		},
-		{
-			id: 3,
-			name: 'The Shawshank Redemption',
-			releaseDate: 'nov 15 2018',
-			img: 'https://www.themoviedb.org/t/p/w220_and_h330_face/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg'
-		}
-	];
+	let movieArray = [];
+
+	async function getMovies() {
+		const response = await fetch('/top-rated-movies.json');
+
+		const data = await response.json();
+
+		movieArray = data.results;
+	}
+
+	onMount(getMovies);
 </script>
 
 <header>
