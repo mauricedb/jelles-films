@@ -15,9 +15,8 @@
 	onMount(getMovies);
 </script>
 
-<header>
-	<h1>top rated movies</h1>
-</header>
+
+<h1>top rated movies</h1>
 
 <div class="card-group">
 	{#each movieArray as movieObject}<MovieCard {movieObject} />{/each}
