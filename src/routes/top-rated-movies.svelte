@@ -21,3 +21,9 @@
 <div class="card-group">
 	{#each movieArray as movieObject}<MovieCard {movieObject} />{/each}
 </div>
+
+<style>
+	.card-group{
+	justify-content: space-around;	
+	}
+</style>
