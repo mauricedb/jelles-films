@@ -1,39 +1,48 @@
-
 <script context="module">
 	/** @type {import('@sveltejs/kit').ErrorLoad} */
-	export function load({ params }) {
-		return {
-			props: {
+	export async function load({ page, fetch }) {
+		const { movieID } = page.params;
+		const response = await fetch(`${movieID}.json`);
+		const body = await response.json();
+		const { movie } = body;
 
-			}
+		return {
+			props: { movie }
 		};
 	}
 </script>
 
 <script>
-	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
-	let movieID = $page.params.movieID;
-	let movie = null
-
-	const pi = 3.14;
-
-	async function getMovie() {		
-	const response = await fetch(`${movieID}.json`);
-
-		const body = await response.json();
-		movie = body.movie
-	}
-
-	onMount(getMovie);
+	export let movie;
 </script>
 
-<h1>{movie?.title}</h1>
-<h2 class="rood">{$page.params.movieID}</h2>
-{pi}
+<form>
+	<h1>{movie.title}</h1>
+	<label>
+		<span> Title: </span>
+		<input type="text" bind:value={movie.title} />
+	</label>
+	<label>
+		<span> Overview: </span>
+		<textarea type="text" bind:value={movie.overview} rows="5" />
+	</label>
+</form>
 
 <style>
-	.rood {
-		color: red;
+	label {
+		display: flex;
+		padding-bottom: 1rem;
+	}
+
+	label > span {
+		flex-basis: 6rem;
+	}
+
+	label > input {
+		flex-grow: 1;
+	}
+
+	label > textarea {
+		flex-grow: 1;
 	}
 </style>
