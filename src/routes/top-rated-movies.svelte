@@ -1,20 +1,20 @@
-<script>
-	import { onMount } from 'svelte';
-	import MovieCard from './movie-card.svelte';
-
-	let movieArray = [];
-
-	async function getMovies() {
+<script context="module">
+	/** @type {import('@sveltejs/kit').ErrorLoad} */
+	export async function load({ page, fetch }) {
 		const response = await fetch('/top-rated-movies.json');
+		const body = await response.json();
 
-		const data = await response.json();
-
-		movieArray = data.results;
+		return {
+			props: { movieArray: body.results }
+		};
 	}
-
-	onMount(getMovies);
 </script>
 
+<script>
+	import MovieCard from './movie-card.svelte';
+
+	export let movieArray = [];
+</script>
 
 <h1>top rated movies</h1>
 
@@ -23,7 +23,7 @@
 </div>
 
 <style>
-	.card-group{
-	justify-content: space-around;	
+	.card-group {
+		justify-content: space-around;
 	}
 </style>

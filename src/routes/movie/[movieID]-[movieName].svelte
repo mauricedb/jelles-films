@@ -27,6 +27,7 @@
 		<textarea type="text" bind:value={movie.overview} rows="5" />
 	</label>
 </form>
+<pre>{JSON.stringify(movie,null, 2)}</pre>
 
 <style>
 	label {
